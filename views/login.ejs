@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.js"></script>
+    <title>Document</title>
+    <link rel="stylesheet" href="/stylesheets/form.css">
+</head>
+<body>
+    <div id="id01" class="modal">
+        <form class="modal-content animate" action="/login" method="POST">
+            <div class="container">
+                <label for="email"><b>Email</b></label>
+                <input id="email" type="text" placeholder="Enter Email" name="email" required>
+                <label for="psw"><b>Password</b></label>
+                <input id="password" type="password" placeholder="Enter Password" name="password" required>
+                <a id="btn"><button type="submit">Login</button></a>
+            </div>
+        </form>
+    </div>
+    <!-- <script>
+        $("#btn").click(function() {
+        $.ajax({
+            url: "/login",
+            type: "post",
+            data: {
+                password: $("#password").val(),
+                email: $("#email").val()
+            }
+        }).then(function(response) {
+                setCookie("token", response.token, 365);
+                window.location.href='/home'
+            }).catch(function(err) {
+                console.log(err)
+            });
+        });
+    </script> -->
+</body>
+</html>
+</body>
+</html>

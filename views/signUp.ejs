@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.js"></script>
+    <title>Document</title>
+    <link rel="stylesheet" href="/stylesheets/form.css">
+</head>
+<body>
+    <div id="id01" class="modal">
+        <form class="modal-content animate">
+            <div class="container">
+                <label for="uname"><b>Username</b></label>
+                <input id="username" type="text" placeholder="Enter Username" name="username" required>
+                <p id="userTxt" style="color:red"></p>
+                <label for="psw"><b>Password</b></label>
+                <input id="password" type="password" placeholder="Enter Password" name="password" required>
+                <p id="passTxt" style="color:red"></p>
+                 <label for="email"><b>Email</b></label>
+                <input id="email" type="text" placeholder="Enter Email" name="email" required>
+                <p id="emailTxt" style="color:red"></p>
+                <a id="btn"><button type="button">Sign Up</button></a>
+            </div>
+        </form>
+    </div>
+    <script>
+        function validateEmail(email) {
+            var re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+            return re.test(email);
+        }
+            var checkUser = false;
+            var checkEmail = false;
+            var checkPassword = false;
+        $("#btn").click(function() {
+            // var password = $("#password").val();
+            // var email = $("#email").val();
+            // var username = $("#username").val();
+            // if (username == "") {
+            //     $("#userTxt").html("Vui lòng nhập tên");
+            //     $("#username").css("border-color","red");
+            //      checkUser == false;
+            // }else{
+            //     $("#userTxt").html("");
+            //     $("#username").css("border-color","blue");
+            //      checkUser == true;
+            // }
+            //  if (password == "") {
+            //     $("#passTxt").html("Vui lòng nhập mật khẩu");
+            //     $("#password").css("border-color","red");
+            //      checkPassword == false
+            // }else{
+            //     $("#passTxt").html("");
+            //     $("#password").css("border-color","blue");
+            //      checkPassword == true
+            // }
+            // if (email == "") {
+            //     $("#emailTxt").html("Vui lòng nhập email");
+            //     $("#email").css("border-color","red");
+            //      checkEmail == false
+            // }else{
+            //       $("#emailTxt").html("");
+            //       $("#email").css("border-color","blue");
+            //         checkEmail == true
+            // }
+            // if((checkEmail == true )&&(checkPassword == true)&&(checkUser)){
+            //     alert('a')
+                $.ajax({
+                url: "/signUp",
+                type: "post",
+                data: {
+                    username: $("#username").val(),
+                    password: $("#password").val(),
+                    email: $("#email").val()
+                }
+            }).then(function(response) {
+                    alert("Dang ki thanh cong")
+                    window.location.href='/'
+                })
+                .catch(function(err) {
+                });
+                // }
+      
+        });
+    </script>
+</body>
+</html>
+</body>
+</html>

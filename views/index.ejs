@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link rel="stylesheet" href="/stylesheets/style.css" />
+    <link rel="stylesheet" href="/stylesheets/form.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.js"></script>
+    <title>Document</title>
+  </head>
+
+  <body>
+    <video autoplay muted loop id="myVideo">
+      <source src="/images/Forrest Beach Ocean.mp4 " type="video/mp4" />
+    </video>
+    <div class="block ">
+      <a href="/login"> <button style="width:auto;">Login</button></a>
+      <a href="/signUp"> <button style="width:auto;">Sign In</button></a>
+      </div>
+    </div>
+    <script>
+      $("#btn").click(function() {
+        var password = $("#password").val();
+        var email = $("#email").val();
+        if (password == "") {
+          $("#passTxt").html("Vui lòng nhập mật khẩu");
+          $("#password").css("border-color","red");
+        }
+        if (email == "") {
+          $("#emailTxt").html("Vui lòng nhập email");
+          $("#email").css("border-color","red");
+        } else {
+          $.ajax({
+            url: "/login",
+            type: "post",
+            data: {
+              password: $("#password").val(),
+              email: $("#email").val()
+            }
+          }).then(function(response) {
+              window.localStorage.setItem("token", response.token);
+              window.location.href = "/home";
+            })
+            .catch(function(err) {
+              console.log("err");
+            });
+        }
+      });
+      var modal = document.getElementById("id01");
+      // When the user clicks anywhere outside of the modal, close it
+      window.onclick = function(event) {
+        if (event.target == modal) {
+          modal.style.display = "none";
+        }
+      };
+    </script>
+  </body>
+</html>
